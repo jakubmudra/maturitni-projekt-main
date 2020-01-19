@@ -40,3 +40,8 @@ body {
     margin: 0;
 }
 
+.sale-item {
+    background-color: #1c7430;
+    color: #ffffff;
+    border-radius: 5px;
+}
