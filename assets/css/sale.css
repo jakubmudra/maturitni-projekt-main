@@ -1,11 +1,17 @@
 body {
     background-image: url("../img/bg.png");
     background-repeat: repeat;
+    height: 100%;
+}
+
+html {
+    height: 100%;
 }
 
 * {
     font-family: 'Roboto', sans-serif;
 }
+
 
 .sale-receipt{
     background-color: rgba(52, 58, 64, 0.15);
@@ -41,7 +47,31 @@ body {
 }
 
 .sale-item {
+    padding: 5px;
+}
+
+.sale-item--inner {
+    padding: 5px;
     background-color: #1c7430;
     color: #ffffff;
     border-radius: 5px;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.sale-item--inner p {
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sale-item--inner.active {
+    visibility: visible;
+}
+
+.sale-main.container {
+    width: 200px;
 }

@@ -37,7 +37,7 @@
                             <table class="w-100">
                                 <thead class="border-bottom px-3">
                                     <tr class="">
-                                        <th class="px-3">Množství</th>
+                                        <th class="px-3">X</th>
                                         <th>Položka</th>
                                         <th class="px-3">Cena</th>
                                     </tr>
@@ -64,9 +64,23 @@
                 </div>
                 <div class="col-8">
                     <div class="row">
-                        <div class="col-2 sale-item">
-                            zboží jedna
-                        </div>
+                        <?php
+
+                        for ($y = 1; $y <= 6; $y++)
+                        {
+                            for ($x = 1; $x <= 6; $x++) {
+                                ?>
+                                <div class="col-2 sale-item">
+                                    <div class="sale-item--inner active" data-x="<?= $x ?>" data-y="<?= $y ?>" data-price="" data-name="" data-productId="">
+                                       <p>sale item</p>
+                                    </div>
+                                </div>
+                                <?
+                            }
+                        }
+
+                        ?>
+
                     </div>
                 </div>
             </div>
@@ -76,6 +90,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/sale.js"></script>
 
     </body>
 </html>
