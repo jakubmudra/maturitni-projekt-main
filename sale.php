@@ -65,14 +65,19 @@
                 <div class="col-8">
                     <div class="row">
                         <?php
+                        //data prepare
+
+                        include 'api/index.php';
+
 
                         for ($y = 1; $y <= 6; $y++)
                         {
                             for ($x = 1; $x <= 6; $x++) {
+                                $product = searchForPosition([$x,$y], $products);
                                 ?>
                                 <div class="col-2 sale-item">
-                                    <div class="sale-item--inner active" data-x="<?= $x ?>" data-y="<?= $y ?>" data-price="" data-name="" data-productId="">
-                                       <p>sale item</p>
+                                    <div class="sale-item--inner <?= ($product != false) ? "active" : "" ?>" data-x="<?= $x ?>" data-y="<?= $y ?>" data-price="<?= $products[$product]->price ?>" data-name="<?= $products[$product]->name ?>" data-productId="<?= $product ?>">
+                                       <p><?= $products[$product]->name ?></p>
                                     </div>
                                 </div>
                                 <?

@@ -19,6 +19,6 @@ $(elementSelector).each(function (element) {
 });
 
 $(elementSelector).click(function () {
-    console.log("Just clicket to x: " + $(this).data("x") + " y " + $(this).data("y"));
+    console.log("Just clicked to product: " + $(this).data("productid") + " with price " + $(this).data("price"));
 });
 
