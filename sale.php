@@ -42,7 +42,7 @@
                                         <th class="px-3">Cena</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="CART">
                                     <tr>
                                         <td class="px-3">1</td>
                                         <td>Test extrémné dlouhého názvu zboží bez autority <small><br>+ add <br> + extra add</small> </td>
@@ -58,7 +58,7 @@
                             </table>
                         </div>
                         <div class="sale-receipt--suma mt-auto px-3 py-4">
-                            <p>Mezisoučet: <span class="float-right">47,80</span></p>
+                            <p>MEZISOUČET: <span class="float-right" id="SUBTOTAL">47,80</span></p>
                         </div>
                     </div>
                 </div>
