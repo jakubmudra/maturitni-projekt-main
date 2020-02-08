@@ -1,0 +1,5 @@
+<div class="col sale-item">
+    <div class="sale-item--inner product <?= $item['data']["color"] ?> <?= ($active) ? "active" : "" ?>" data-x="<?= $item["x"] ?>" data-y="<?= $item['y'] ?>" data-price="<?= ($active) ? $item["data"]['price'] : "" ?>" data-name="<?= ($active) ? $item["data"]['name'] : "" ?>" data-productId="<?= ($active) ? $item["data"]['id'] : "" ?>">
+        <p><?= ($active) ? $item["data"]['name'] : "" ?></p>
+    </div>
+</div>

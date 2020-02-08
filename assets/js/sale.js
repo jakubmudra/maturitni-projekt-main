@@ -10,7 +10,7 @@ let height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
 $(".sale-main.container").css({'width' : height + 200 + 'px'});
 
 let elementSelector = ".sale-item--inner";
-//Resizing
+
 $(elementSelector).each(function (element) {
     let elementHeight = $(this).width();
     let elementPadding = parseInt($(this).css("padding-left").replace("px","")) + parseInt($(this).css("padding-right").replace("px",""));
@@ -18,8 +18,16 @@ $(elementSelector).each(function (element) {
     $(this).css({'height' : elementHeight + elementPadding});
 });
 
+window.onresize = function(event) {
 
-
+    //Resizing
+    $(elementSelector).each(function (element) {
+        let elementHeight = $(this).width();
+        let elementPadding = parseInt($(this).css("padding-left").replace("px","")) + parseInt($(this).css("padding-right").replace("px",""));
+        console.log(elementPadding);
+        $(this).css({'height' : elementHeight + elementPadding});
+    });
+};
 
 
 
@@ -78,7 +86,7 @@ class cart {
 
 let ct = new cart("2019012321");
 
-$(elementSelector).click(function () {
+$(".sale-item--inner.product").click(function () {
     console.log("Just clicked to product: " + $(this).data("productid") + " with price " + $(this).data("price"));
     let product = $(this);
     ct.add({id: product.data("productid"), name: product.data("name"), price: product.data("price")});

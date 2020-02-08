@@ -55,13 +55,15 @@
                 </div>
                 <div class="col-8">
                     <div class="row">
+
                         <?php
                         //data prepare
 
                         include 'api/index.php';
 
-                        $posRenderer = new posRenderer(6,6);
-                        $posRenderer->addProducts($products);
+                        $posRenderer = new posRenderer(6,6, "pay");
+                        $posRenderer->_preRenderTable();
+                        //var_dump($posRenderer->table);
                         echo $posRenderer->renderTable();
 
                         ?>

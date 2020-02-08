@@ -16,6 +16,7 @@ html {
 .sale-receipt{
     background-color: rgba(52, 58, 64, 0.15);
     min-height: 300px;
+    margin: 5px 0;
 }
 
 .sale-receipt--receiptId p{
@@ -59,6 +60,38 @@ html {
     visibility: hidden;
 }
 
+.blue {
+    background-color: #007BFF;
+}
+
+.dark-blue {
+    background-color: #0056B3;
+}
+
+.green {
+    background-color: #29A745;
+}
+
+.dark-red {
+    background-color: #721C24;
+}
+
+.red {
+    background-color: #DD3444;
+}
+
+.grey {
+    background-color: #6C757D;
+}
+
+.dark-grey {
+    background-color: #343A3E;
+}
+
+.orange {
+    background-color: #FFC103;
+}
+
 .sale-item--inner p {
     text-align: center;
     margin: 0;
@@ -66,6 +99,7 @@ html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    user-select: none;
 }
 
 .sale-item--inner.active {
@@ -75,3 +109,4 @@ html {
 .sale-main.container {
     width: 200px;
 }
+
