@@ -1,0 +1,11 @@
+<tr>
+    <th scope="row">{{ item.id }}</th>
+    <td>{{ item.name }}</td>
+    <td>{{ item.price|number_format(2, '.', ',')  }} CZK</td>
+    <td>{{ __(types[item.type-1].name ) }}</td>
+    <td>{{ productModel.getProductStockQuantity(item.id) }}</td>
+    <td>
+        <a onclick="return confirm('{{ __("delete-popup") }}');" href="/product/remove/{{ item.id }}">X</a>
+        <a href="/product/edit/{{ item.id }}">{{ __("edit") }}</a>
+    </td>
+</tr>

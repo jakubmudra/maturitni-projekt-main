@@ -1,0 +1,30 @@
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-12">
+            <h1>{{ __("stock-taking-page-title") }}</h1>
+            <p class="text-right">{{ __("product-list-showing-products") }} : {{ items|length }} </p>
+
+            <a href="/stocktaking/{{ stockId }}/edit">{{ __("stocktaking") }}</a>
+            <a href="/stocktaking/{{ stockId }}/edit">{{ __("goods-delivery") }}</a>
+            <a href="/stocktaking/{{ stockId }}/edit">{{ __("goods-receipt") }}</a>
+            <a href="/stock/edit/{{ stockId }}/edit">{{ __("edit-stock") }}</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">{{ __("name") }}</th>
+                        <th scope="col">{{ __("price") }}</th>
+                        <th scope="col">{{ __("quantity") }}</th>
+                        <th scope="col">{{ __("actions") }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                        {{ include('stock/stockTaking-single.twig') }}
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

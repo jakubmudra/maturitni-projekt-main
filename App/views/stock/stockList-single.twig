@@ -1,0 +1,10 @@
+<tr>
+    <th scope="row">{{ item.id }}</th>
+    <td>{{ item.name }}</td>
+    <td>{{ item.active }}</td>
+    <td class="text-right">
+        <a href="/stocktaking/{{ item.id }}">{{ __("stocktaking") }}</a>
+        <a onclick="return confirm({{ __("delete-popup") }});" href="/stock/remove/{{ item.id }}">{{ __("delete") }}</a>
+        <a href="/stock/edit/{{ item.id }}">{{ __("edit") }}</a>
+    </td>
+</tr>

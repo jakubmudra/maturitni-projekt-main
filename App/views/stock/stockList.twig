@@ -1,0 +1,24 @@
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-12">
+            <h1>{{ __("stock-list-page-title") }}</h1>
+            <p class="text-right">{{ __("stock-list-showing-stocks") }}:{{ stocks|length }}</p>
+            <a href="/stock/edit">{{ __("add-stock") }}</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">{{ __("name") }}</th>
+                        <th scope="col">{{ __("state") }}</th>
+                        <th scope="col">{{ __("actions") }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in stocks %}
+                        {{ include('stock/stockList-single.twig') }}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
