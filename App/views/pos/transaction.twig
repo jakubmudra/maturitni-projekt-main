@@ -1,0 +1,36 @@
+<section class="sale-main container mt-4">
+    <div class="row">
+        <div class="col-4 sale-receipt p-0">
+            <span class="d-none" data-tid="{{ transactionId }}" id="transactionID"></span>
+            <div class="d-flex align-content-end flex-column h-100 p-0">
+                <div class="sale-receipt--receiptId px-3 border-bottom">
+                    <p>Receipt ID: <span class="float-right">10202211</span> </p>
+                </div>
+                <div class="sale-receipt--items">
+                    <table class="w-100">
+                        <thead class="border-bottom px-3">
+                        <tr class="">
+                            <th class="px-3">X</th>
+                            <th>Položka</th>
+                            <th class="px-3">Cena</th>
+                        </tr>
+                        </thead>
+                        <tbody id="CART">
+
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="sale-receipt--suma mt-auto px-3 py-4">
+                    <p>MEZISOUČET: <span class="float-right" id="SUBTOTAL"></span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="row">
+                {{ posRender|raw }}
+            </div>
+        </div>
+    </div>
+</section>
+

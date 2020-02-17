@@ -5,6 +5,7 @@
         "symfony/intl": "^5.0",
         "mpdf/mpdf": "^8.0",
       "ext-json": "*",
-        "symfony/twig-bridge": "^5.0"
+        "symfony/twig-bridge": "^5.0",
+        "filipsedivy/php-eet": "^4.2"
     }
 }

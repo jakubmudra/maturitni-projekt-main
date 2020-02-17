@@ -19,12 +19,18 @@ class Db
     public static function connect()
     {
         if (!isset(self::$connection)) {
-            self::$connection = @new \PDO(
-                sprintf("mysql:host=%s;dbname=%s", Config::$database["host"], Config::$database["database"]),
-                Config::$database["user"],
-                Config::$database["password"],
-                self::$settings
-            );
+            try {
+                self::$connection = @new \PDO(
+                    sprintf("mysql:host=%s;dbname=%s", Config::$database["host"], Config::$database["database"]),
+                    Config::$database["user"],
+                    Config::$database["password"],
+                    self::$settings
+                );
+            } catch (\PDOException $e)
+            {
+                header("Location: /error");
+            }
+
         }
     }
 

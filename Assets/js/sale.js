@@ -41,55 +41,57 @@ class cart {
         this.quantities = [];
     }
 
-    add(product) {
-        if(this.products.some(singleProduct => singleProduct.id === product.id )){
-            let id = this.products.findIndex(singleProduct => singleProduct.id === product.id);
-            this.quantities[id] += 1;
-        } else{
-            this.products.push(product);
-            this.quantities.push(1);
-        }
-    }
-
-    get() {
-        return this.products;
-    }
-
-    getSubTotal()
-    {
-        let subTotal = 0;
-
-        for(var i = 0; i < this.products.length; i++)
-        {
-            subTotal += Math.round(this.products[i].price * this.quantities[i] * 100) / 100;
-        }
-
-        return (subTotal).toFixed(2);
-    }
-
     render() {
         let rtn = "";
+        let transactionID = $("#transactionID").data("tid");
+        let data = {trans_id : transactionID,  action: "getProducts"};
 
-        for(var i = 0; i < this.products.length; i++)
-        {
-            rtn += "<tr>";
-            rtn += "<td>" +  + this.quantities[i] +"</td>";
-            rtn += "<td>" + this.products[i].name + "</td>";
-            rtn += "<td>" + (Math.round(this.products[i].price * this.quantities[i] * 100) / 100).toFixed(2)+ "</td>";
-            rtn += "</tr>";
-        }
+        $.ajax({
+            type:"POST",
+            cache:true,
+            url:"/api/saveTransaction",
+            data:data,
+            success: function (result) {
+                this.products = result;
+                let subTotal = 0;
 
-        $("#CART").html(rtn);
-        $("#SUBTOTAL").html(this.getSubTotal());
+                for(var i = 0; i < result.length; i++)
+                {
+                    subTotal +=  Math.round(result[i][2] * result[i][3] * 100) / 100;
+
+                    rtn += "<tr>";
+                    rtn += "<td>" + result[i][3] +"</td>";
+                    rtn += "<td>" + result[i][1] + "</td>";
+                    rtn += "<td>" + (Math.round(result[i][2] * result[i][3] * 100) / 100).toFixed(2)+ "</td>";
+                    rtn += "</tr>";
+                }
+
+                $("#CART").html(rtn);
+                $("#SUBTOTAL").html( (subTotal).toFixed(2) );
+            }
+        });
+
     }
 }
 
 let ct = new cart("2019012321");
+ct.render();
 
 $(".sale-item--inner.product").click(function () {
-    console.log("Just clicked to product: " + $(this).data("productid") + " with price " + $(this).data("price"));
+    let transactionID = $("#transactionID").data("tid");
     let product = $(this);
-    ct.add({id: product.data("productid"), name: product.data("name"), price: product.data("price")});
-    console.log(ct.get());
+    let data = {trans_id : transactionID, product_id: product.data("productid"), quantity : 1, action: "addProduct"};
     ct.render();
+    let ajaxTime= new Date().getTime();
+    $.ajax({
+        type:"POST",
+        cache:true,
+        url:"/api/saveTransaction",
+        data:data    // multiple data sent using ajax
+    }).done(function () {
+        let totalTime = new Date().getTime()-ajaxTime;
+        // Here I want to get the how long it took to load some.php and use it further
+        console.log("ajax : " + totalTime + " ms");
+    });
+
 });

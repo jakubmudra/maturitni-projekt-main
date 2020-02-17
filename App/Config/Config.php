@@ -11,7 +11,8 @@ class Config
     public static string $templateDirectory = "App/Views/";
     public static string $translantionFile = "App/Config/lang/";
     public static string $language = 'cz';
-    public static array $maxPositions = ["x" => 6, "y" => 6];
+    public static array $maxPositions = ["x" => 5, "y" => 5];
+    public static array $EETCert = ["path" => "App/Config/eet/EET_CA1_Playground-CZ00000019.p12", "password" => "eet"];
 
 
     public static array $database = [

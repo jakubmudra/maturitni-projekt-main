@@ -19,7 +19,8 @@ class RouterController extends Controller
     public function process($params)
     {
         $parsedURL = $this->parseURL($params);
-        $controllerClass =  Config::$controllerNamespace . ucfirst($this->parseClassName( array_shift( $parsedURL)) . "Controller" );
+        $className = $this->parseClassName(array_shift($parsedURL));
+        $controllerClass =  Config::$controllerNamespace . ucfirst($className) . "Controller";
         $filename = str_replace("\\", '/', $controllerClass) . ".php";
 
         if (get_parent_class($this) === $controllerClass) {
@@ -35,7 +36,7 @@ class RouterController extends Controller
         $this->setData("title", $this->controller->getHeader("title"));
         $this->setData("desc", $this->controller->getHeader("description"));
 
-        $this->setTemplate("baseLayout");
+        $this->setTemplate($className == "api" ? "api" : "baseLayout");
     }
 
     private function parseClassName($param)

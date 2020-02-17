@@ -43,6 +43,7 @@ class ProductController extends Controller
 
                 $keys = ["name", "price", "type"];
                 $product = array_intersect_key($_POST, array_flip($keys));
+                $product["visibility"] = 1;
 
                 $productModel->saveProduct($product, $_POST['id']);
 
